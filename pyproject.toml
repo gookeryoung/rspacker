@@ -1,0 +1,34 @@
+[build-system]
+requires = ["maturin>=1.6,<2.0"]
+build-backend = "maturin"
+
+[project]
+name = "rspacker"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Rust",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Programming Language :: Python :: Implementation :: PyPy",
+]
+dynamic = ["version"]
+
+[project.scripts]
+rp = "rspacker.cli:main"
+
+[tool.maturin]
+python-source = "python"
+module-name = "rspacker.librsp"
+features = ["pyo3/extension-module"]
+
+[tool.uv]
+index-url = 'https://pypi.tuna.tsinghua.edu.cn/simple/'
+dev-dependencies = [
+    "maturin>=1.7.4",
+    "mypy>=1.12.0",
+    "nuitka>=2.4.10",
+    "pip>=24.2",
+    "setuptools>=75.2.0",
+]
+
+[tool.ruff]
+line-length = 80 # 代码最大行宽
